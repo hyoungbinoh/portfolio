@@ -1,0 +1,47 @@
+<template>
+  <div>
+    <Header />
+    <router-view />
+    <Footer />
+  </div>
+</template>
+
+<script>
+import Header from './components/Header.vue';
+import Footer from './components/Footer.vue'
+
+export default {
+  name: 'App',
+  components: {
+    Header,
+    Footer
+  }
+}
+</script>
+
+<style>
+html, body {
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+}
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+/* Skill, About */
+.common-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: white;
+}
+.common-title {
+  font-size: 2rem;
+  color: black;
+}
+</style>
