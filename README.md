@@ -2,7 +2,7 @@
 
 > ##### javascript vue.js css 등을 활용한 포트폴리오 홈페이지 제작
 ![스튜디오소나기스크린샷](https://user-images.githubusercontent.com/108599126/222919860-f9372eac-a532-4138-a584-7d2d00ee8b74.JPG)
-##### URL: https://www.hyoungbinoh.github.io
+##### URL: https://hyoungbinoh.github.io
    
 ### 1. 개발목표
 * 프론트엔드 엔지니어로서의 자기소개와 기존 포트폴리오 소개를 위해 제작.
