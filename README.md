@@ -65,6 +65,7 @@ export default {
 
 * 아코디언 기능 
 <img src="https://user-images.githubusercontent.com/108599126/222918669-40acd172-a6b8-4a04-ba04-0c8a3e9a90e6.JPG" width="630" height="340">
+
 ```
 <template>
   <div class="accordion">
