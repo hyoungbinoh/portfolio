@@ -41,6 +41,7 @@ export default {
 
 * Axios를 활용한 서버와의 비동기 통신(목서버 활용)
 <img src="https://user-images.githubusercontent.com/108599126/224748592-04158740-a401-448a-bad9-e983a1abee26.JPG" width="630" height="340">
+
 ```
 setup() {
    const skills = ref([]);
@@ -103,9 +104,8 @@ setup(props){
 ```
 
 ### 5. 문제해결
-
+* v-for로 생성된 캐러셀과 아코디언이 버튼을 누르면 동시에 작동하는 문제가 발생하였고, 이에 초기값을 각각의 객체 안에 넣어주어 문제를 해결하였습니다.
 <br></br>
 
-### 4. 보완할 점
-* 캐러셀 모션 추가 필요
-* 캐러셀, 아코디언 컴포넌트 분리 필요
+### 6. 보완할 점
+* Postman 목서버를 대체할 서버 제작이 필요
