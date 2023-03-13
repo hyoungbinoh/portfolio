@@ -5,6 +5,7 @@
     <About />
     <Story />
     <Skill />
+    <Project />
   </div>
 </template>
 
@@ -13,6 +14,7 @@ import Main from './Main.vue'
 import About from './About.vue'
 import Story from './Story.vue'
 import Skill from './Skill.vue'
+import Project from './Project.vue'
 
 export default {
     name: 'Home',
@@ -21,7 +23,7 @@ export default {
         About,
         Story,
         Skill,
-
+        Project
     }
 }
 </script>

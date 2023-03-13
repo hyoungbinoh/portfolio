@@ -12,7 +12,7 @@
                     :key="list" 
                     class="skill-list"
                 >
-                    <img class="skill-icon" :src="list.img"/>
+                    <img class="skill-icon" :src="require(`@/assets/img/${list.img}.png`)"/>
                     <span class="skill-name">{{ list.name }}</span>
                 </div>
             </div>
@@ -21,38 +21,27 @@
 </template>
 
 <script>
+import axios from "axios"
+import { ref } from 'vue'
+
 export default {
     name: "Skill",
-    data () {
+    setup() {
+        const skills = ref([]);
+
+        const getSkill = async() => {
+            try {
+                const res = await axios.get('https://c0e36c31-e50a-49f7-b76a-c4fca97c9858.mock.pstmn.io/skills')
+                skills.value = res.data;
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
+        getSkill()
+
         return{
-            skills:[{
-                title: 'Skills',
-                index: 0,
-                lists: [
-                {id:1, name: "HTML5", img: require("@/assets/img/html.png")},
-                {id:2, name: "CSS3", img: require("@/assets/img/css.png")},
-                {id:3, name: "JavaScript", img: require("@/assets/img/javascript.png")},
-                {id:4, name: "jQuery", img: require("@/assets/img/jquery.png")},
-                {id:5, name: "React", img: require("@/assets/img/react.png")},
-                {id:6, name: "Vue.js", img: require("@/assets/img/vue.png")},
-                {id:7, name: "Python", img: require("@/assets/img/python.png")},
-                {id:8, name: "Flask", img: require("@/assets/img/flask.png")},
-                {id:9, name: "MongoDB", img: require("@/assets/img/mongodb.png")},
-                {id:9, name: "Git", img: require("@/assets/img/git.png")},
-                ]
-            },{
-                title: 'Tools',
-                index: 1,
-                lists: [
-                {id:1, name: "VSCode", img: require("@/assets/img/vscode.png")},
-                {id:2, name: "GitHub", img: require("@/assets/img/github.png")},
-                {id:3, name: "Pycharm", img: require("@/assets/img/pycharm.png")},
-                {id:4, name: "Photoshop", img: require("@/assets/img/photoshop.png")},
-                {id:5, name: "Illustrator", img: require("@/assets/img/illustrator.png")},
-                {id:6, name: "Promiere Pro", img: require("@/assets/img/premierepro.png")},
-                {id:7, name: "After Effects", img: require("@/assets/img/aftereffects.png")},
-            ]
-            }]
+            skills
         }
     }
 }
@@ -68,6 +57,7 @@ export default {
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
+        margin-top: 1rem;
     }
     .skill-list {
         display: flex;

@@ -1,7 +1,7 @@
 <template>
   <div class="story-container">
     <div class="story-wrap">
-      <p class="story"> 안녕하세요! </p> 
+      <p class="story">안녕하세요!</p> 
       <p class="story">기회를 놓치지 않는 프론트엔드 엔지니어 오형빈입니다.</p>
       <p class="story">3년간 영상제작자로 일하다가</p> 
       <p class="story">개발자로서 새로운 도전을 하고자 합니다.</p>
@@ -37,7 +37,7 @@ export default {
   color: black;
   word-break: keep-all;
   font-size: 1.2rem;
-  margin: 0.5rem 0;
+  margin-top: 0.8rem;
 }
 @media screen and (max-width: 27rem){
   .story{

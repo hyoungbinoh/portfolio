@@ -22,6 +22,7 @@ export default {
   background-image: url('../assets/img/background.jpg');
   background-position: center;
   background-size: cover;
+  text-align: center;
 }
 
 .main-wrapper {

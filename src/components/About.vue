@@ -18,7 +18,7 @@
                 <font-awesome-icon class="about-icon" icon="fa-brands fa-github" />
                 <div>
                     <p class="education-title">깃허브</p>
-                    <a class="about-text" href="https://github.com/hyoungbinoh">https://github.com/hyoungbinoh</a>
+                    <a class="about-text about-link" href="https://github.com/hyoungbinoh">https://github.com/hyoungbinoh</a>
                 </div>
             </div>           
             </div>
@@ -45,74 +45,40 @@
 </template>
 
 <script>
+import axios from 'axios'
+import { ref } from 'vue'
+
 export default {
     name: 'About',
-    data () {
-        return{
-            abouts:[
-                {   
-                    id: 1,
-                    icon: 'fa-solid fa-user',
-                    title: '이름',
-                    detail: '오형빈'
-                },
-                {
-                    id: 2,
-                    icon: 'fa-solid fa-calendar',
-                    title: '생년월일',
-                    detail: '1992.05.16'
-                },
-                {
-                    id: 3,
-                    icon: 'fa-solid fa-graduation-cap',
-                    title: '최종학력',
-                    detail: '한성대학교'
-                },
-                {
-                    id: 4,
-                    icon: 'fa-solid fa-envelope',
-                    title: '이메일',
-                    detail: 'ovtw500@gmail.com'
-                },
-                {
-                    id: 5,
-                    icon: 'fa-solid fa-phone',
-                    title: '전화번호',
-                    detail: '010-5161-2761'
-                }
-            ],
-            educations:[
-                {
-                    id: 1,
-                    title: '훈훈한 Javascript ',
-                    period: '2023.02 -',
-                    details: ['교육기관: 인프런 X 코드캠프', '사용기술: HTML, CSS, JavaScript'] 
-                },
-                {
-                    id: 2,
-                    title: '프로젝트로 배우는 React.js ',
-                    period: '2023.01 - 2023.01',
-                    details: ['교육기관: 인프런', '사용기술: React.js, Redux Toolkit, Bootstrap'] 
-                },
-                {
-                    id: 3,
-                    title: '프로젝트로 배우는 vue.js ',
-                    period: '2022.10 - 2023.01',
-                    details: ['교육기관: 인프런', '사용기술: Vue.js, Vuex, Bootstrap'] 
-                },
-                {
-                    id: 4,
-                    title: '리액트 기초반 ',
-                    period: '2022.8 - 2022.09',
-                    details: ['교육기관: 스파르타 코딩클럽', '사용기술: React.js, React Redux , Styled-Components'] 
-                },
-                {
-                    id: 5,
-                    title: '비개발자를 위한, 웹개발 종합반 ',
-                    period: '2022.3 - 2022.04',
-                    details: ['교육기관: 스파르타 코딩클럽', '사용기술: HTML, CSS, JavaScript, jQuery, Python, Flask'] 
-                },
-            ]
+    setup() {
+        const abouts = ref([]);
+        const educations = ref([]);
+
+        const getAbout = async() => {
+            try {
+                const res = await axios.get('https://c0e36c31-e50a-49f7-b76a-c4fca97c9858.mock.pstmn.io/abouts')
+                abouts.value = res.data;
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
+        getAbout()
+
+        const getEducation = async() => {
+            try {
+                const res = await axios.get('https://c0e36c31-e50a-49f7-b76a-c4fca97c9858.mock.pstmn.io/educations')
+                educations.value = res.data;
+            } catch (err) {
+                console.log(err)
+            }
+        }
+
+        getEducation()
+
+        return {
+            abouts,
+            educations
         }
     }
 }
@@ -128,6 +94,7 @@ export default {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20rem, max-content));
     justify-content: center;
+    margin-top: 1.2rem;
 }
 .about-list {
     text-align: left;
@@ -145,16 +112,21 @@ export default {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30rem, max-content));
     justify-content: center;
+    margin-top: 1.2rem;
 }
 .education-list {
     text-align: left;
     width: 30rem;
     margin: 1rem;
 }
-.about-text{
+.about-text {
     text-decoration: none;
     color: black;
     font-size: 1rem;
+    margin-top: 0.5rem;
+}
+.about-link {
+    display: inline-block;
 }
 .education-title {
     font-size: 1rem;
@@ -166,6 +138,7 @@ export default {
     color: gray;
 }
 .education-detail {
+    margin-top: 0.8rem;
     font-size: 1rem;
     color: black;
     text-indent: 1rem;

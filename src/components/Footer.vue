@@ -26,6 +26,7 @@ export default {
     background-color: #282828;
     width: 100%;
     height: 6rem;
+    text-align: center;
 }
 .footer-wrap {
     position: absolute;
@@ -36,6 +37,7 @@ export default {
 }
 .footer-info {
     color: white;
+    margin-top: .5rem;
     font-size: .8rem;
     word-break: keep-all;
 }

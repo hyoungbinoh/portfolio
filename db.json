@@ -1,0 +1,96 @@
+{
+    "skills":[{
+        "title": "Skills",
+        "index": 0,
+        "lists": [
+        {"id":1, "name": "HTML5", "img": "html"},
+        {"id":2, "name": "CSS3", "img": "css"},
+        {"id":3, "name": "JavaScript", "img": "javascript"},
+        {"id":4, "name": "jQuery", "img": "jquery"},
+        {"id":5, "name": "React", "img": "react"},
+        {"id":5, "name": "Redux", "img": "redux"},
+        {"id":6, "name": "Vue.js", "img": "vue"},
+        {"id":6, "name": "Vuex", "img": "vue"},
+        {"id":7, "name": "Python", "img": "python"},
+        {"id":8, "name": "Flask", "img": "flask"},
+        {"id":9, "name": "MongoDB", "img": "mongodb"},
+        {"id":9, "name": "Git", "img": "git"}
+        ]
+    },{
+        "title": "Tools",
+        "index": 1,
+        "lists": [
+        {"id":1, "name": "VSCode", "img": "vscode"},
+        {"id":2, "name": "GitHub", "img": "github"},
+        {"id":3, "name": "Pycharm", "img": "pycharm"},
+        {"id":4, "name": "Photoshop", "img": "photoshop"},
+        {"id":5, "name": "Illustrator", "img": "illustrator"},
+        {"id":6, "name": "Promiere Pro", "img": "premierepro"},
+        {"id":7, "name": "After Effects", "img": "aftereffects"}
+    ]
+    }],
+    "abouts":[
+        {   
+            "id": 1,
+            "icon": "fa-solid fa-user",
+            "title": "이름",
+            "detail": "오형빈"
+        },
+        {
+            "id": 2,
+            "icon": "fa-solid fa-calendar",
+            "title": "생년월일",
+            "detail": "1992.05.16"
+        },
+        {
+            "id": 3,
+            "icon": "fa-solid fa-graduation-cap",
+            "title": "최종학력",
+            "detail": "한성대학교"
+        },
+        {
+            "id": 4,
+            "icon": "fa-solid fa-envelope",
+            "title": "이메일",
+            "detail": "ovtw500@gmail.com"
+        },
+        {
+            "id": 5,
+            "icon": "fa-solid fa-phone",
+            "title": "전화번호",
+            "detail": "010-5161-2761"
+        }
+    ],
+    "educations":[
+        {
+            "id": 1,
+            "title": "훈훈한 Javascript ",
+            "period": "2023.02 -",
+            "details": ["교육기관: 인프런 X 코드캠프", "사용기술: HTML, CSS, JavaScript"] 
+        },
+        {
+            "id": 2,
+            "title": "프로젝트로 배우는 React.js ",
+            "perio": "2023.01 - 2023.01",
+            "details": ["교육기관: 인프런", "사용기술: React.js, Redux Toolkit, Bootstrap"] 
+        },
+        {
+            "id": 3,
+            "title": "프로젝트로 배우는 vue.js ",
+            "period": "2022.10 - 2023.01",
+            "details": ["교육기관: 인프런", "사용기술: Vue.js, Vuex, Bootstrap"] 
+        },
+        {
+            "id": 4,
+            "title": "리액트 기초반 ",
+            "period": "2022.8 - 2022.09",
+            "details": ["교육기관: 스파르타 코딩클럽", "사용기술: React.js, React Redux , Styled-Components"] 
+        },
+        {
+            "id": 5,
+            "title": "비개발자를 위한, 웹개발 종합반 ",
+            "period": "2022.3 - 2022.04",
+            "details": ["교육기관: 스파르타 코딩클럽", "사용기술: HTML, CSS, JavaScript, jQuery, Python, Flask"] 
+        }
+    ]
+}
