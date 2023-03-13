@@ -7,143 +7,105 @@
 ### 1. 개발목표
 * 프론트엔드 엔지니어로서의 자기소개와 기존 포트폴리오 소개를 위해 제작.
 * 강의를 통해 배운 vue.js를 활용해보기 위해 포트폴리오 홈페이지 제작.
+<br></br>
 
-### 2. 사용기술
+### 2. 제작인원
+* 프론트엔드 개발자 1명(본인)
+<br></br>
+
+### 3. 사용기술
 <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black"> <img src="https://img.shields.io/badge/Vue.js-4FC08D?style=flat&logo=vue.js&logoColor=white"> <img src="https://img.shields.io/badge/Vuex-4FC08D?style=flat&logo=vue.js&logoColor=white"> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white">
+<br></br>
 
-### 3. 구현기능
-* 캐러셀 기능 
+### 4. 구현기능
+* Vuex를 활용한 전역 상태 관리
 <img src="https://user-images.githubusercontent.com/108599126/222903975-d955aeb5-40f7-4cb3-8fb2-35496ab26059.JPG" width="630" height="340">
 
 ```
-<template>
-  <div class="carousel">
-    <button @click="() => prevSlide(id)" class="carousel-btn prev-btn">&lt;</button>
-    <button @click="() => nextSlide(id)" class="carousel-btn next-btn">&gt;</button>
-    <div>
-      <div
-        v-for="(slide, index) in project.slides"
-        :key="slide"
-        :index="index"
-        class="portfolio-slide"
-      >
-        <div v-show="project.currentSlide === index + 1"> 
-          <img class="portfolio-img" :src="slide"/>
-        </div>
-      </div>
-    </div>
-  </div>
-<template>
-<script>
 export default {
-   methods: {
-      // 아코디언(Vue2 방식)
-      toggle: function (id) {
-         this.projects = this.projects.map((project, i)=>{
-            if(id === i) {
-               project.open = !project.open
-            }
-            return project;
-         })
-      },
-      beforeEnter: function (el) {
-         el.style.height = "0";
-      },
-      enter: function (el) {
-         el.style.height = el.scrollHeight + "px";
-      },
-      beforeLeave: function (el) {
-         el.style.height = el.scrollHeight + "px";
-      },
-      leave: function (el) {
-         el.style.height = "0";
-      }
-   }
+  name: 'Portfolio',
+  components: {
+    Carousel,
+    Accordion
+  },
+  setup() {
+    const store = useStore();
+    const projects = store.state.projects
+
+    return {
+      projects
+    }
+  }
 }
-</script>
 ```
 
-* 아코디언 기능 
+* Axios를 활용한 서버와의 비동기 통신(목서버 활용)
+<img src="https://user-images.githubusercontent.com/108599126/224748592-04158740-a401-448a-bad9-e983a1abee26.JPG" width="630" height="340">
+```
+setup() {
+   const skills = ref([]);
+
+   const getSkill = async() => {
+      try {
+         const res = await axios.get('https://c0e36c31-e50a-49f7-b76a-c4fca97c9858.mock.pstmn.io/skills')
+         skills.value = res.data;
+      } catch (err) {
+         console.log(err)
+      }
+   }
+
+   getSkill()
+
+   return{
+      skills
+   }
+}
+```
+
+* 아코디언 구현
 <img src="https://user-images.githubusercontent.com/108599126/222918669-40acd172-a6b8-4a04-ba04-0c8a3e9a90e6.JPG" width="630" height="340">
 
 ```
-<template>
-  <div class="accordion">
-     <button @click="() => toggle(id)" v-if="!project.open" class="accordion-btn"><span>상세정보</span><span>&#9660;</span></button>
-     <button @click="() => toggle(id)" v-if="project.open" class="accordion-btn"><span>상세정보</span><span>&#9650;</span></button>
-     <transition
-       v-on:before-enter="beforeEnter"
-       v-on:enter="enter"
-       v-on:before-leave="beforeLeave"
-       v-on:leave="leave"
-     >
-       <div v-if="project.open" class="portfolio-link-box">
-         <div class="portfolio-link-wrap">            
-           <a :href="project.siteUrl" class="portfolio-link">사이트 바로가기</a>
-           <a :href="project.githubUrl" class="portfolio-link">깃허브 바로가기</a>
-         </div>
-         <p class="portfolio-title">&#x2705; 사용기술</p>
-         <p class="portfolio-detail">&#x1F449; {{ project.skill }}</p>
-         <p class="portfolio-title">&#x2705; 기능구현</p>
-         <p 
-           v-for="(information, informationindex) in project.information"
-           :key="informationindex"
-           class="portfolio-detail"
-         >
-           &#x1F449; {{ information }}
-         </p>
-         <p class="portfolio-title">&#x2705; 개선사항</p>
-         <p 
-           v-for="(improvement, improvementindex) in project.improvement"
-           :key="improvementindex"
-           class="portfolio-detail"
-         >
-           &#x1F449; {{ improvement }}
-         </p>
-       </div>
-     </transition>
-   </div>
-<template>
-<script>
-import { ref } from 'vue';
-export default {
-   setup() {
-      // 캐러셀(Vue3 방식)
-      const nextSlide = (id) => {
-         projects.value.map((project, i) => {
-            if(id === i) {
-               if(project.currentSlide === project.slides.length) {
-                  project.currentSlide = 1;
-                  return;
-               }
-               project.currentSlide += 1;
-            }
-            return project
-         })
-      }
+setup(props){
+   const toggle = (id) => {
+      props.projects.map((project, i)=>{
+         if(id === i) {
+            project.open = !project.open
+         }
+         return project
+      })
+   }
 
-      const prevSlide = (id) => {
-         projects.value.map((project, i) => {
-            if(id === i) {
-               if(project.currentSlide === 1) {
-                  project.currentSlide = project.slides.length
-                  return;
-               }
-             project.currentSlide -= 1;
-            }
-         })
-      }
+   const beforeEnter = (el) => {
+      el.style.height = "0";
+   }
 
-      return {
-         projects,
-         prevSlide, 
-         nextSlide
-      }
+   const enter = (el) => {
+      el.style.height = el.scrollHeight + "px";
+   }
+
+   const beforeLeave = (el) => {
+      el.style.height = el.scrollHeight + "px";
+   }
+
+   const leave = (el) => {
+      el.style.height = "0";
+   }
+
+   return{
+      toggle,
+      beforeEnter,
+      enter,
+      beforeLeave,
+      leave
    }
 }
-</script>
 ```
 
-### 4. 개선사항
+### 5. 문제해결
+
+<br></br>
+
+### 4. 보완할 점
 * 캐러셀 모션 추가 필요
 * 캐러셀, 아코디언 컴포넌트 분리 필요
