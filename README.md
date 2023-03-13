@@ -1,6 +1,6 @@
 # portfolio 포트폴리오 홈페이지
 
-> ##### javascript vue.js css 등을 활용한 포트폴리오 홈페이지 제작
+> ##### javascript vue.js Vuex 등을 활용한 포트폴리오 홈페이지 제작
 ![스튜디오소나기스크린샷](https://user-images.githubusercontent.com/108599126/222919860-f9372eac-a532-4138-a584-7d2d00ee8b74.JPG)
 ##### URL: https://hyoungbinoh.github.io
    
@@ -109,3 +109,4 @@ setup(props){
 
 ### 6. 보완할 점
 * Postman 목서버를 대체할 서버 제작이 필요
+<br></br>
